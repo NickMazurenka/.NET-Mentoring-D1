@@ -5,26 +5,28 @@
 		public string FirstName;
 		public string LastName;
 
+		// Can't override Equals without boxing operation
+		// http://stackoverflow.com/questions/10390782/why-cant-we-override-equals-in-a-value-type-without-boxing
 		public override bool Equals(object obj)
 		{
-			var person = obj as PersonClass;
+			if (obj is PersonStruct == false) return false;
 
-			return person != null && Equals(person);
+			var p = (PersonStruct) obj;
+
+			return Equals(p);
 		}
 
-		// GetHashCode implementation:
-		//http://stackoverflow.com/questions/263400/what-is-the-best-algorithm-for-an-overridden-system-object-gethashcode
+		public bool Equals(PersonStruct p)
+		{
+			return FirstName == p.FirstName && LastName == p.LastName;
+		}
+
 		public override int GetHashCode()
 		{
 			unchecked
 			{
 				return ((FirstName?.GetHashCode() ?? 0) * 486187739) ^ (LastName?.GetHashCode() ?? 0);
 			}
-		}
-
-		private bool Equals(PersonClass p)
-		{
-			return FirstName == p.FirstName && LastName == p.LastName;
 		}
 	}
 }
