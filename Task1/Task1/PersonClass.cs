@@ -1,15 +1,19 @@
-﻿namespace Task1
+﻿using System;
+
+namespace Task1
 {
-	public class PersonClass
+	public class PersonClass : IEquatable<PersonClass>
 	{
 		public string FirstName;
 		public string LastName;
 
 		public override bool Equals(object obj)
 		{
+			if (ReferenceEquals(this, obj)) return true;
+
 			var person = obj as PersonClass;
 
-			return person != null && Equals(person);
+			return !ReferenceEquals(person, null) && Equals(person);
 		}
 
 		// GetHashCode implementation:
@@ -22,9 +26,28 @@
 			}
 		}
 
-		private bool Equals(PersonClass p)
+		public bool Equals(PersonClass p)
 		{
-			return FirstName == p.FirstName && LastName == p.LastName;
+			if (ReferenceEquals(p, null)) return false;
+
+			return string.Equals(FirstName, p.FirstName, StringComparison.InvariantCulture)
+				&& string.Equals(LastName, p.LastName, StringComparison.InvariantCulture);
+		}
+
+		public static bool operator ==(PersonClass left, PersonClass right)
+		{
+			if (ReferenceEquals(left, null))
+				if (ReferenceEquals(right, null))
+					return true;
+				else
+					return false;
+
+			return left.Equals(right);
+		}
+
+		public static bool operator !=(PersonClass left, PersonClass right)
+		{
+			return !(left == right);
 		}
 	}
 }
