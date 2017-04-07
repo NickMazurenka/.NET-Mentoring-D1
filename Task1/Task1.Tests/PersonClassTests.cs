@@ -30,6 +30,23 @@ namespace Task1.Tests
 		}
 
 		[TestMethod]
+		public void Equals_SameReferences_ReturnsTrue()
+		{
+			// Arrange
+			var p1 = new PersonClass
+			{
+				FirstName = "Kim",
+				LastName = "Kuan"
+			};
+
+			// Act
+			var result = p1.Equals(p1);
+
+			// Assert
+			Assert.IsTrue(result);
+		}
+
+		[TestMethod]
 		public void Equals_FirstNamesNotEqual_ReturnsFalse()
 		{
 			// Arrange
@@ -68,6 +85,45 @@ namespace Task1.Tests
 
 			// Act
 			var result = p1.Equals(p2);
+
+			// Assert
+			Assert.IsFalse(result);
+		}
+
+		[TestMethod]
+		public void Equals_SecondPersonHasIncompatibleType_ReturnsFalse()
+		{
+			// Arrange
+			var p1 = new PersonClass
+			{
+				FirstName = "Kim",
+				LastName = "Kuan"
+			};
+			var p2 = new PersonStruct
+			{
+				FirstName = "Kim",
+				LastName = "Kuan"
+			};
+
+			// Act
+			var result = p1.Equals(p2);
+
+			// Assert
+			Assert.IsFalse(result);
+		}
+
+		[TestMethod]
+		public void Equals_SecondPersonIsNull_ReturnsFalse()
+		{
+			// Arrange
+			var p1 = new PersonClass
+			{
+				FirstName = "Kim",
+				LastName = "Kuan"
+			};
+
+			// Act
+			var result = p1.Equals(null);
 
 			// Assert
 			Assert.IsFalse(result);

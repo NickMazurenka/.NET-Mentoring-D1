@@ -73,6 +73,45 @@ namespace Task1.Tests
 			Assert.IsFalse(result);
 		}
 
+		[TestMethod]
+ 		public void Equals_SecondPersonHasIncompatibleType_ReturnsFalse()
+ 		{
+ 			// Arrange
+ 			var p1 = new PersonStruct
+			{
+ 				FirstName = "Kim",
+ 				LastName = "Kuan"
+ 			};
+ 			var p2 = new PersonClass
+			{
+ 				FirstName = "Kim",
+ 				LastName = "Kuan"
+ 			};
+ 
+ 			// Act
+ 			var result = p1.Equals(p2);
+ 
+ 			// Assert
+ 			Assert.IsFalse(result);
+ 		}
+
+		[TestMethod]
+		public void Equals_SecondPersonIsNull_ReturnsFalse()
+		{
+			// Arrange
+			var p1 = new PersonStruct
+			{
+				FirstName = "Kim",
+				LastName = "Kuan"
+			};
+
+			// Act
+			var result = p1.Equals(null);
+
+			// Assert
+			Assert.IsFalse(result);
+		}
+
 		// GetHashCode
 
 		// Unit tests according to Jon Skeet:

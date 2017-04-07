@@ -11,9 +11,7 @@ namespace Task1
 		{
 			if (ReferenceEquals(this, obj)) return true;
 
-			var person = obj as PersonClass;
-
-			return !ReferenceEquals(person, null) && Equals(person);
+			return Equals(obj as PersonClass);
 		}
 
 		// GetHashCode implementation:
