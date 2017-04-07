@@ -9,8 +9,6 @@ namespace Task1
 
 		public override bool Equals(object obj)
 		{
-			if (ReferenceEquals(this, obj)) return true;
-
 			return Equals(obj as PersonClass);
 		}
 
@@ -26,6 +24,7 @@ namespace Task1
 
 		public bool Equals(PersonClass p)
 		{
+			if (ReferenceEquals(this, p)) return true;
 			if (ReferenceEquals(p, null)) return false;
 
 			return string.Equals(FirstName, p.FirstName, StringComparison.InvariantCulture)
