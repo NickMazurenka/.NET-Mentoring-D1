@@ -27,7 +27,13 @@ namespace Task2
 			//return ((IEnumerable<T>) _items).GetEnumerator();
 		}
 
+		public IEnumerator<T> GetReverseEnumerator()
+		{
+			for (int i = _items.Count - 1; i >= 0; i--)
+			{
+				yield return _items[i];
+			}
+		}
 
-		
 	}
 }

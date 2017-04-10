@@ -26,16 +26,26 @@ namespace Task2.Tests
 		}
 
 		[TestMethod]
-		public void GetEnumerator_MultipleItems_EnumeratorNotNull()
+		public void GetEnumerator_SimpleClass_EnumeratorNotNull()
 		{
 			// Arrange
 			var iterator = new Iterator<Person>();
 
 			// Act
-			iterator.Add(new Person());
-			iterator.Add(new Person());
-			iterator.Add(new Person());
 			var enumerator = iterator.GetEnumerator();
+
+			// Assert
+			Assert.IsNotNull(enumerator);
+		}
+
+		[TestMethod]
+		public void GetReverseEnumerator_SimpleClass_EnumeratorNotNull()
+		{
+			// Arrange
+			var iterator = new Iterator<Person>();
+
+			// Act
+			var enumerator = iterator.GetReverseEnumerator();
 
 			// Assert
 			Assert.IsNotNull(enumerator);
