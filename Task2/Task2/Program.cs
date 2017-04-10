@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Task2
 {
@@ -7,7 +7,7 @@ namespace Task2
 	{
 		static void Main()
 		{
-			var test = new Iterator<string>();
+			var test = new IterableCollection<string>();
 			test.Add("test1");
 			test.Add("test2");
 
@@ -18,13 +18,16 @@ namespace Task2
 			}
 
 			Console.WriteLine("Reverse order");
-			using (var rev = test.GetReverseEnumerator())
+			foreach (var item in test.GetReverseIterator())
 			{
-				rev.MoveNext();
-				Console.WriteLine(rev.Current);
-				rev.MoveNext();
-				Console.WriteLine(rev.Current);
+				Console.WriteLine(item);
 			}
+
+			// Reverse alternative:
+			//foreach (var item in test.Reverse())
+			//{
+			//	Console.WriteLine(item);
+			//}
 		}
 	}
 }

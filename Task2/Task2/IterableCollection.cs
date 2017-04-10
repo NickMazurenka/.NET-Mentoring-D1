@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Task2
 {
-	public class Iterator<T> : IEnumerable<T>
+	public class IterableCollection<T> : IEnumerable<T>
 	{
 		private readonly List<T> _items = new List<T>();
 
@@ -27,7 +27,7 @@ namespace Task2
 			//return ((IEnumerable<T>) _items).GetEnumerator();
 		}
 
-		public IEnumerator<T> GetReverseEnumerator()
+		public IEnumerable<T> GetReverseIterator()
 		{
 			for (int i = _items.Count - 1; i >= 0; i--)
 			{

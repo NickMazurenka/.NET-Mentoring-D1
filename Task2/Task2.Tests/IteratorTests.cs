@@ -3,13 +3,13 @@
 namespace Task2.Tests
 {
 	[TestClass]
-	public class IteratorTests
+	public class IteratableCollectionTests
 	{
 		[TestMethod]
 		public void Add_ReferenceType_ItemAdded()
 		{
 			// Arrange
-			var iterator = new Iterator<Person>();
+			var iterator = new IterableCollection<Person>();
 			var item = new Person();
 			Person result;
 
@@ -29,7 +29,7 @@ namespace Task2.Tests
 		public void GetEnumerator_SimpleClass_EnumeratorNotNull()
 		{
 			// Arrange
-			var iterator = new Iterator<Person>();
+			var iterator = new IterableCollection<Person>();
 
 			// Act
 			var enumerator = iterator.GetEnumerator();
@@ -42,10 +42,10 @@ namespace Task2.Tests
 		public void GetReverseEnumerator_SimpleClass_EnumeratorNotNull()
 		{
 			// Arrange
-			var iterator = new Iterator<Person>();
+			var iterator = new IterableCollection<Person>();
 
 			// Act
-			var enumerator = iterator.GetReverseEnumerator();
+			var enumerator = iterator.GetReverseIterator();
 
 			// Assert
 			Assert.IsNotNull(enumerator);

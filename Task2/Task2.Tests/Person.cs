@@ -1,6 +1,6 @@
 ﻿namespace Task2.Tests
 {
-	// Class for testing Iterator
+	// Class for testing IterableCollection
 	internal class Person
 	{
 		public string FirstName;
