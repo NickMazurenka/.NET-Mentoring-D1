@@ -11,4 +11,14 @@ namespace Task3
 		[Description("The one with National Library")]
 		Minsk
 	}
+
+	enum CustomCity
+	{
+		[CustomDescription("The one with Big Ben tower")]
+		London,
+		[CustomDescription("The one with big park")]
+		NewYork,
+		[CustomDescription("The one with National Library")]
+		Minsk
+	}
 }
