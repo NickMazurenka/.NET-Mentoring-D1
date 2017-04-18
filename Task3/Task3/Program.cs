@@ -20,7 +20,6 @@ namespace Task3
 			var d = GetEnumDescription(t);
 			Console.WriteLine("Enum value: " + t);
 			Console.WriteLine("Enum description: " + d);
-
 		}
 	}
 }

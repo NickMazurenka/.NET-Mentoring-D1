@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Task2
@@ -23,8 +24,6 @@ namespace Task2
 			{
 				yield return _items[i];
 			}
-			// Alternative:
-			//return ((IEnumerable<T>) _items).GetEnumerator();
 		}
 
 		public IEnumerable<T> GetReverseIterator()
@@ -33,6 +32,18 @@ namespace Task2
 			{
 				yield return _items[i];
 			}
+		}
+
+		public IEnumerable<T> Search(Predicate<T> match)
+		{
+			for (int i = 0; i < _items.Count; i++)
+			{
+				if (match(_items[i]))
+					yield return _items[i];
+			}
+
+			// Alternative:
+			//return _items.Where(t => match(t));
 		}
 
 	}

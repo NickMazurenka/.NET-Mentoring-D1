@@ -50,5 +50,18 @@ namespace Task2.Tests
 			// Assert
 			Assert.IsNotNull(enumerator);
 		}
+
+		[TestMethod]
+		public void Search_SimpleClassSimpleDelegate_EnumeratorNotNull()
+		{
+			// Arrange
+			var iterator = new IterableCollection<Person>();
+
+			// Act
+			var enumerator = iterator.Search(person => false);
+
+			// Assert
+			Assert.IsNotNull(enumerator);
+		}
 	}
 }

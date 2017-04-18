@@ -9,6 +9,7 @@ namespace Task2
 			var test = new IterableCollection<string>();
 			test.Add("test1");
 			test.Add("test2");
+			test.Add("???");
 
 			Console.WriteLine("Default order");
 			foreach (var item in test)
@@ -22,11 +23,17 @@ namespace Task2
 				Console.WriteLine(item);
 			}
 
-			// Reverse alternative:
-			//foreach (var item in test.Reverse())
-			//{
-			//	Console.WriteLine(item);
-			//}
+			Console.WriteLine("Custom search");
+			foreach (var item in test.Search(CustomSearchMethod))
+			{
+				Console.WriteLine(item);
+			}
+
+		}
+
+		private static bool CustomSearchMethod(string s)
+		{
+			return s.Contains("test");
 		}
 	}
 }
