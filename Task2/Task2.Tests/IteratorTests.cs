@@ -39,7 +39,7 @@ namespace Task2.Tests
 		}
 
 		[TestMethod]
-		public void GetReverseEnumerator_SimpleClass_EnumeratorNotNull()
+		public void GetReverseEnumerator_PersonClass_EnumeratorNotNull()
 		{
 			// Arrange
 			var iterator = new IterableCollection<Person>();
@@ -52,7 +52,7 @@ namespace Task2.Tests
 		}
 
 		[TestMethod]
-		public void Search_SimpleClassSimpleDelegate_EnumeratorNotNull()
+		public void Search_PersonClassFalseDelegate_EnumeratorNotNull()
 		{
 			// Arrange
 			var iterator = new IterableCollection<Person>();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace Task3
 {
@@ -8,22 +9,16 @@ namespace Task3
 		private static string GetEnumDescription(Enum value)
 		{
 			var fi = value.GetType().GetField(value.ToString());
-			var attributes = (DescriptionAttribute[]) fi.GetCustomAttributes(
-				typeof(DescriptionAttribute),
-				false);
-			return attributes.Length > 0 ? attributes[0].Description : value.ToString();
-		}
+            var attribute = (DescriptionAttribute)fi.GetCustomAttribute(typeof(DescriptionAttribute), false);
+            return attribute.Description;
+        }
 
 		private static string GetCustomEnumDescription(Enum value)
 		{
 			var fi = value.GetType().GetField(value.ToString());
-			var attributes = (CustomDescriptionAttribute[])fi.GetCustomAttributes(
-				typeof(CustomDescriptionAttribute),
-				false);
-			return attributes.Length > 0 ? attributes[0].Description : value.ToString();
+		    var attribute = (CustomDescriptionAttribute) fi.GetCustomAttribute(typeof(CustomDescriptionAttribute), false);
+		    return attribute.Description;
 		}
-
-
 
 		static void Main()
 		{

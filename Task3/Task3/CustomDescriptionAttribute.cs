@@ -2,7 +2,8 @@
 
 namespace Task3
 {
-	public class CustomDescriptionAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Field)]
+    public class CustomDescriptionAttribute : Attribute
 	{
 		public string Description { get; }
 
