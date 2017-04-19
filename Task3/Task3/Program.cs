@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Reflection;
+using System.Text;
 
 namespace Task3
 {
@@ -16,8 +17,15 @@ namespace Task3
 		private static string GetCustomEnumDescription(Enum value)
 		{
 			var fi = value.GetType().GetField(value.ToString());
-		    var attribute = (CustomDescriptionAttribute) fi.GetCustomAttribute(typeof(CustomDescriptionAttribute), false);
-		    return attribute.Description;
+		    var attributes = (CustomDescriptionAttribute[]) fi.GetCustomAttributes(typeof(CustomDescriptionAttribute), false);
+
+            var sb = new StringBuilder();
+		    foreach (var attribute in attributes)
+		    {
+		        sb.Append(attribute.Description);
+		        sb.Append(Environment.NewLine);
+		    }
+		    return sb.ToString();
 		}
 
 		static void Main()
@@ -32,7 +40,7 @@ namespace Task3
 			var ct = CustomCity.Minsk;
 			var cd = GetCustomEnumDescription(ct);
 			Console.WriteLine("Custom enum value: " + ct);
-			Console.WriteLine("Custom enum description: " + cd);
+			Console.WriteLine("Custom enum description:\n" + cd);
 		}
 	}
 }

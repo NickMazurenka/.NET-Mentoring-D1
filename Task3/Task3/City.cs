@@ -18,7 +18,8 @@ namespace Task3
 		London,
 		[CustomDescription("The one with big park")]
 		NewYork,
+		[CustomDescription("Where I leave it up")]
 		[CustomDescription("The one with National Library")]
-		Minsk
+        Minsk
 	}
 }
