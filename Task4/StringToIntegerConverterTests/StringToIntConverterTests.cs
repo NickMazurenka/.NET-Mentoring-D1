@@ -24,26 +24,26 @@ namespace StringToIntegerConverterTests
         public void Convert_PositiveInt_Converted()
         {
             // Arrange
-            var s = "+12345";
+            var s = "+2147483647";
 
             // Act
             var r = StringToIntConverter.Convert(s);
 
             // Assert
-            Assert.AreEqual(r, 12345);
+            Assert.AreEqual(r, 2147483647);
         }
 
         [TestMethod]
         public void Convert_NegativeInt_Converted()
         {
             // Arrange
-            var s = "-12345";
+            var s = "-2147483648";
 
             // Act
             var r = StringToIntConverter.Convert(s);
 
             // Assert
-            Assert.AreEqual(r, -12345);
+            Assert.AreEqual(r, -2147483648);
         }
 
         [TestMethod]

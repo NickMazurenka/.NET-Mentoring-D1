@@ -7,7 +7,7 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            var s = "27";
+            var s = "-2147483649";
             Console.WriteLine($"Example of converting: {StringToIntConverter.Convert(s)}");
         }
     }

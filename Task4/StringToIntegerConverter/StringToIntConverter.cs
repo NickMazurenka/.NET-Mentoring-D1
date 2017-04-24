@@ -22,7 +22,7 @@ namespace StringToIntegerConverter
             if (string.IsNullOrWhiteSpace(s))
                 throw new ArgumentException($"Conevrted string {nameof(s)} cannot be null or whitespace");
 
-            var result = 0;
+            long result = 0;
             var index = 0;
             var positive = true;
             if (s[0] == '-')
@@ -47,7 +47,14 @@ namespace StringToIntegerConverter
                 }
             }
 
-            return result * (positive ? 1 : -1);
+            try
+            {
+                return checked((int) (result * (positive ? 1 : -1)));
+            }
+            catch (OverflowException e)
+            {
+                throw new OverflowException($"Overflow on when converting {s} string", e);
+            }
         }
     }
 }
