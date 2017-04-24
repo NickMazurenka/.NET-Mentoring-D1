@@ -5,22 +5,22 @@ namespace StringToIntegerConverter
     /// <summary>
     /// Class to convert
     /// </summary>
-    public class StringToIntConverter
+    public static class StringToIntConverter
     {
         /// <summary>
         /// Convert string to integer
         /// </summary>
         /// <param name="s">String to convert</param>
         /// <returns>Converted integer</returns>
-        /// <exception cref="ArgumentNullException">If converted string is null</exception>
+        /// <exception cref="ArgumentException">If converted string is null</exception>
         /// <exception cref="FormatException">If converted string has incorrect format</exception>
         /// <exception cref="OverflowException">If resulting int is out of int value bounds</exception>
         /// <remarks>Works with positive and negative values</remarks>
         public static int Convert(string s)
         {
             // Check input data
-            if (s == null)
-                throw new ArgumentNullException($"Conevrted string {nameof(s)} cannot be null");
+            if (string.IsNullOrWhiteSpace(s))
+                throw new ArgumentException($"Conevrted string {nameof(s)} cannot be null or whitespace");
 
             var result = 0;
             var index = 0;

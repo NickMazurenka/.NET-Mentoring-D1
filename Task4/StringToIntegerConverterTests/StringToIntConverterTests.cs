@@ -17,7 +17,7 @@ namespace StringToIntegerConverterTests
             var r = StringToIntConverter.Convert(s);
 
             // Assert
-            Assert.AreEqual(r, int.Parse(s));
+            Assert.AreEqual(r, 12345);
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace StringToIntegerConverterTests
             var r = StringToIntConverter.Convert(s);
 
             // Assert
-            Assert.AreEqual(r, int.Parse(s));
+            Assert.AreEqual(r, 12345);
         }
 
         [TestMethod]
@@ -43,12 +43,12 @@ namespace StringToIntegerConverterTests
             var r = StringToIntConverter.Convert(s);
 
             // Assert
-            Assert.AreEqual(r, int.Parse(s));
+            Assert.AreEqual(r, -12345);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Convert_Null_ArgumentNullException()
+        [ExpectedException(typeof(ArgumentException))]
+        public void Convert_Null_ArgumentException()
         {
             // Arrange
             string s = null;
