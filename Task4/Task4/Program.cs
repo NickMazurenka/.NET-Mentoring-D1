@@ -1,10 +1,14 @@
-﻿namespace Task4
+﻿using System;
+using StringToIntegerConverter;
+
+namespace Task4
 {
     class Program
     {
         static void Main(string[] args)
         {
-
+            var s = "27";
+            Console.WriteLine($"Example of converting: {StringToIntConverter.Convert(s)}");
         }
     }
 }
