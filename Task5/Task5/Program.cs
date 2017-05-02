@@ -10,7 +10,7 @@ namespace Task5
         public string Surname { get; set; }
     }
 
-    class Program
+    static class Program
     {
         static void Main()
         {
@@ -19,10 +19,13 @@ namespace Task5
             var list = (IList)Activator.CreateInstance(listType);
 
             for (int i = 0; i < 5; i++)
-                list.Add(new Person
+                list.GetType().GetMethod("Add").Invoke(list, new object[]
                 {
-                    Name = "Kim",
-                    Surname = "Kuan_" + i
+                    new Person
+                    {
+                        Name = "Kim",
+                        Surname = "Kuan_" + i
+                    }
                 });
 
             foreach (var person in list)
