@@ -148,6 +148,22 @@ namespace Task
                         }
                     }
                 };
+            foreach (var group1 in products)
+            {
+                Console.WriteLine($"Category \"{group1.Category}\"");
+                foreach (var group2 in group1.Products)
+                {
+                    Console.WriteLine($" In stock \"{group2.InStock}\"");
+                    foreach (var group3 in group2.Products)
+                    {
+                        Console.WriteLine($"  Price \"{group3.Price}\"");
+                        foreach (var product in group3.Products)
+                        {
+                            Console.WriteLine($"   Product \"{product.ProductName}\"");
+                        }
+                    }
+                }
+            }
         }
     }
 }
