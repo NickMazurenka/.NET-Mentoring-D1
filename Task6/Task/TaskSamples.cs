@@ -165,5 +165,26 @@ namespace Task
                 }
             }
         }
+
+        [Category("Hometask")]
+        [Title("Task 8")]
+        [Description("Сгруппируйте товары по группам «дешевые», «средняя цена», «дорогие»")]
+        public void Linq8()
+        {
+            var middleBottom = 50m;
+            var middleTop = 200m;
+
+            Console.WriteLine("Cheap");
+            foreach (var product in _dataSource.Products.Where(p => p.UnitPrice < middleBottom))
+                Console.WriteLine($"Name \"{product.ProductName}\" Price \"{product.UnitPrice}\"");
+
+            Console.WriteLine("Middle");
+            foreach (var product in _dataSource.Products.Where(p => p.UnitPrice >= middleBottom && p.UnitPrice <= middleTop))
+                Console.WriteLine($"Name \"{product.ProductName}\" Price \"{product.UnitPrice}\"");
+
+            Console.WriteLine("Expensive");
+            foreach (var product in _dataSource.Products.Where(p => p.UnitPrice > middleTop))
+                Console.WriteLine($"Name \"{product.ProductName}\" Price \"{product.UnitPrice}\"");
+        }
     }
 }
