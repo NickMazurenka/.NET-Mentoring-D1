@@ -1,0 +1,1 @@
+﻿select COUNT(CASE WHEN ShippedDate IS NULL THEN 1 ELSE NULL END) from Northwind.Orders

@@ -1,0 +1,1 @@
+﻿SELECT Count(DISTINCT CustomerId) FROM Northwind.Orders
