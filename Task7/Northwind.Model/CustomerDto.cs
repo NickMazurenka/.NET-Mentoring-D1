@@ -1,12 +1,13 @@
 ﻿using System;
 
-namespace DapperExample
+namespace Northwind.Model
 {
-    public class Customer
+    public class CustomerDto
     {
-        public string CustomerId { get; set; }
         public string ContactName { get; set; }
+
         public string ContactTitle { get; set; }
+
         public DateTime JoinDate { get; set; }
     }
 }
