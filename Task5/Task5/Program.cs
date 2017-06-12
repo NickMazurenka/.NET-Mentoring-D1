@@ -14,7 +14,7 @@ namespace Task5
     {
         static void Main()
         {
-            var type = typeof(Person);
+            var type = Type.GetType("Task5.Person");
             var listType = typeof(List<>).MakeGenericType(type);
             var list = (IList)Activator.CreateInstance(listType);
 
