@@ -7,6 +7,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Practices.Unity;
 using MvcMusicStore.Models;
 using MvcMusicStore.Services;
+using log4net;
 
 namespace MvcMusicStore.Controllers
 {
@@ -24,6 +25,8 @@ namespace MvcMusicStore.Controllers
         private const string XsrfKey = "XsrfId";
 
         private UserManager<ApplicationUser> _userManager;
+
+        private static ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
@@ -67,6 +70,8 @@ namespace MvcMusicStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            _logger.Debug(
+                $"Login called with paramters: username: {model.UserName} password: {model.Password} rememberme: {model.RememberMe}");
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindAsync(model.UserName, model.Password);
@@ -75,10 +80,12 @@ namespace MvcMusicStore.Controllers
                     await SignInAsync(user, model.RememberMe);
 
                     IocContainer.Instance.Resolve<IPerformanceCounter>().IncrementSuccessfullLoginCount();
+                    _logger.Info($"Successfull login by {model.UserName}");
 
                     return RedirectToLocal(returnUrl);
                 }
                 IocContainer.Instance.Resolve<IPerformanceCounter>().IncrementFailedLoginCount();
+                _logger.Info($"Failed login by {model.UserName} with incorrect password {model.Password}");
 
                 ModelState.AddModelError("", "Invalid username or password.");
             }
