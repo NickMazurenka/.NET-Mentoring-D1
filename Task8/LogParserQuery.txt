@@ -1,0 +1,9 @@
+--Общее количество каждого типа записей
+LogParser "SELECT COUNT(*) FROM D:\Projects\.NET-Mentoring-D1\Task8\MvcMusicStore\myapp.log WHERE Text LIKE '%INFO%'" -i:TEXTLINE
+LogParser "SELECT COUNT(*) FROM D:\Projects\.NET-Mentoring-D1\Task8\MvcMusicStore\myapp.log WHERE Text LIKE '%DEBUG%'" -i:TEXTLINE
+LogParser "SELECT COUNT(*) FROM D:\Projects\.NET-Mentoring-D1\Task8\MvcMusicStore\myapp.log WHERE Text LIKE '%WARNING%'" -i:TEXTLINE
+LogParser "SELECT COUNT(*) FROM D:\Projects\.NET-Mentoring-D1\Task8\MvcMusicStore\myapp.log WHERE Text LIKE '%ERROR%'" -i:TEXTLINE
+LogParser "SELECT COUNT(*) FROM D:\Projects\.NET-Mentoring-D1\Task8\MvcMusicStore\myapp.log WHERE Text LIKE '%FATAL%'" -i:TEXTLINE
+
+--Перечень ошибок (записей с кодом Debug)
+LogParser "SELECT * FROM D:\Projects\.NET-Mentoring-D1\Task8\MvcMusicStore\myapp.log WHERE Text LIKE '%DEBUG%'" -i:TEXTLINE

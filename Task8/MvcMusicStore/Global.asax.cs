@@ -14,7 +14,6 @@ namespace MvcMusicStore
         {
             try
             {
-                throw new NotImplementedException();
                 AreaRegistration.RegisterAllAreas();
                 FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
                 RouteConfig.RegisterRoutes(RouteTable.Routes);
