@@ -1,2 +1,2 @@
-﻿SELECT DISTINCT OrderID, Quantity FROM Northwind.[Order Details]
+﻿SELECT DISTINCT OrderID FROM Northwind.[Order Details]
 WHERE Quantity BETWEEN 3 AND 10
