@@ -3,6 +3,20 @@ using System.Xml.Serialization;
 
 namespace T10_Serialization
 {
+    public enum Genre
+    {
+        [XmlEnum(Name = "Computer")]
+        Computer,
+        [XmlEnum(Name = "Fantasy")]
+        Fantasy,
+        [XmlEnum(Name = "Romance")]
+        Romance,
+        [XmlEnum(Name = "Horror")]
+        Horror,
+        [XmlEnum(Name = "Science Fiction")]
+        ScienceFiction
+    }
+
     [XmlType("catalog", Namespace = "http://library.by/catalog")]
     [XmlRoot(Namespace = "http://library.by/catalog", IsNullable = false)]
     public class Catalog
@@ -10,7 +24,7 @@ namespace T10_Serialization
         [XmlElement("book")]
         public CatalogBook[] Book { get; set; }
 
-        [XmlAttribute(DataType = "date")]
+        [XmlAttribute("date", DataType = "date")]
         public DateTime Date { get; set; }
     }
 
@@ -30,7 +44,7 @@ namespace T10_Serialization
         public string Title { get; set; }
 
         [XmlElement("genre")]
-        public string Genre { get; set; }
+        public Genre Genre { get; set; }
 
         [XmlElement("publisher")]
         public string Publisher { get; set; }
