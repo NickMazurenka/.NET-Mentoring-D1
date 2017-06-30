@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdoNetRepository.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Order.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Entities\OrderStatus.cs" />
     <Compile Include="INorthwindRepository.cs" />
     <Compile Include="Entities\Product.cs" />
-    <Compile Include="NorthwindRepository.cs" />
+    <Compile Include="DapperRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

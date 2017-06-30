@@ -7,18 +7,18 @@ using Northwind.DAL.Entities;
 
 namespace Northwind.DAL
 {
-    public class NorthwindRepository : INorthwindRepository
+    public class DapperRepository : INorthwindRepository
     {
-        private string ConnectionString;
+        private readonly string _connectionString;
 
-        public NorthwindRepository(string connectionString)
+        public DapperRepository(string connectionString)
         {
-            ConnectionString = connectionString;
+            _connectionString = connectionString;
         }
 
         public IEnumerable<Order> GetOrders()
         {
-            using (var con = new SqlConnection(ConnectionString))
+            using (var con = new SqlConnection(_connectionString))
             {
                 return con.Query<Order>("SELECT * FROM Northwind.Orders");
             }
@@ -26,7 +26,7 @@ namespace Northwind.DAL
 
         public IEnumerable<OrderDetail> GetOrdersDetails()
         {
-            using (var con = new SqlConnection(ConnectionString))
+            using (var con = new SqlConnection(_connectionString))
             {
                 return con.Query<OrderDetail, Order, Product, OrderDetail>(
                     @"SELECT *
@@ -46,7 +46,7 @@ namespace Northwind.DAL
 
         public OrderDetail GetOrderDetails(int orderId)
         {
-            using (var con = new SqlConnection(ConnectionString))
+            using (var con = new SqlConnection(_connectionString))
             {
                 using (var reader = con.QueryMultiple(
                     @"SELECT *
@@ -70,7 +70,7 @@ namespace Northwind.DAL
 
         public void CreateOrder(OrderForInsert order)
         {
-            using (var con = new SqlConnection(ConnectionString))
+            using (var con = new SqlConnection(_connectionString))
             {
                 con.Insert(order);
             }
@@ -78,7 +78,7 @@ namespace Northwind.DAL
 
         public int Delete2017YearOrders()
         {
-            using (var con = new SqlConnection(ConnectionString))
+            using (var con = new SqlConnection(_connectionString))
             {
                 return con.Execute("DELETE FROM Northwind.Orders WHERE year(OrderDate) = '2017'");
             }
