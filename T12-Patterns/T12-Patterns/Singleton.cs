@@ -8,7 +8,7 @@ namespace T12_Patterns
 
         private Singleton()
         {
-            Console.WriteLine("Instance created");
+            Console.WriteLine("Singleton");
         }
 
         public static Singleton Instance => _instance ?? (_instance = new Singleton());

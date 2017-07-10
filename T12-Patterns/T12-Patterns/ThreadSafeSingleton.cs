@@ -22,7 +22,7 @@ namespace T12_Patterns
 
         private ThreadSafeSingleton()
         {
-            Console.WriteLine("Thread safe instance created");
+            Console.WriteLine("ThreadSafeSingleton");
         }
     }
 }

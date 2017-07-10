@@ -29,6 +29,7 @@ namespace T12_Patterns
             while (DateTime.Now < StartDateTime) ;
             var test = ThreadSafeSingleton.Instance;
             var test2 = Singleton.Instance;
+            var test3 = LazySingleton.Instance;
         }
     }
 }
